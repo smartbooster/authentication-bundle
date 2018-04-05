@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="list.label_id">
+                <source>list.label_id</source>
+                <target>#</target>
+            </trans-unit>
+            <trans-unit id="form.label_email">
+                <source>form.label_email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="form.label_first_name">
+                <source>form.label_first_name</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="form.label_last_name">
+                <source>form.label_last_name</source>
+                <target>Nom</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
