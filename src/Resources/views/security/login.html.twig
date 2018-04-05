@@ -1,0 +1,46 @@
+{% extends layout_template %}
+
+{% trans_default_domain 'security' %}
+
+{% from '@SmartSonata/macros/alert.html.twig' import flashes %}
+
+{% block sonata_page_content %}
+    <div class="login-box">
+        {% if error %}
+            {{ flashes('danger', [error], 'security') }}
+        {% endif %}
+        {{ flashes('success', app.session.flashbag.get('success'), 'security') }}
+        {{ flashes('danger', app.session.flashbag.get('error'), 'security') }}
+
+        <div class="login-box-body">
+            <h1 class="text-center">SMART SONATA</h1>
+            <form action="{{ security_login_check_url }}" method="post">
+                <div class="form-group has-feedback">
+                    <input type="text" name="_username" class="form-control" placeholder="{{ 'login.label_username'|trans({}, 'security') }}" required />
+                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                </div>
+                <div class="form-group has-feedback">
+                    <input type="password" name="_password" class="form-control" placeholder="{{ 'login.label_password'|trans({}, 'security') }}" required />
+                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                </div>
+                <div class="row margin-bottom">
+                    <div class="col-xs-12">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ 'login.label_submit'|trans({}, 'security') }}</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="icheck">
+                            <label>
+                                <input type="checkbox" name="_remember_me"> {{ 'login.label_remember'|trans({}, 'security') }}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        {#<a href="{{ security_forgot_password_url }}">{{ 'login.action.forgot_password'|trans({}, 'security') }}</a>#}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
