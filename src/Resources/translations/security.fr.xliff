@@ -42,6 +42,14 @@
                 <source>user.action.logout</source>
                 <target>Se déconnecter</target>
             </trans-unit>
+            <trans-unit id="profile_edit.title">
+                <source>profile_edit.title</source>
+                <target>Modifier vos informations</target>
+            </trans-unit>
+            <trans-unit id="profile_edit.processed">
+                <source>profile_edit.processed</source>
+                <target>Vos informations ont été mise à jour.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

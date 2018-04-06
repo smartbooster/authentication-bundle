@@ -18,6 +18,18 @@
                 <source>form.label_last_name</source>
                 <target>Nom</target>
             </trans-unit>
+            <trans-unit id="form.label_password">
+                <source>form.label_password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="form.label_password_confirmation">
+                <source>form.label_password_confirmation</source>
+                <target>Confirmation mot de passe</target>
+            </trans-unit>
+            <trans-unit id="fieldset.label_profile">
+                <source>fieldset.label_profile</source>
+                <target>My compte</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

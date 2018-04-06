@@ -20,13 +20,13 @@ class UserProfileType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'user.label_email'
+                'label' => 'form.label_email'
             ])
             ->add('firstName', null, [
-                'label' => 'user.label_first_name'
+                'label' => 'form.label_first_name'
             ])
             ->add('lastName', null, [
-                'label' => 'user.label_last_name'
+                'label' => 'form.label_last_name'
             ])
             ->add(
                 'plainPassword',
@@ -34,8 +34,8 @@ class UserProfileType extends AbstractType
                 [
                     'type'               => 'password',
                     'required'           => false,
-                    'first_options'      => ['label' => 'user.label_password'],
-                    'second_options'     => ['label' => 'user.label_password_confirmation'],
+                    'first_options'      => ['label' => 'form.label_password'],
+                    'second_options'     => ['label' => 'form.label_password_confirmation'],
                     'translation_domain' => $options['translation_domain'],
                 ]
             );
