@@ -1,0 +1,68 @@
+{% extends '@SonataAdmin/CRUD/edit.html.twig' %}
+
+{% import "@SonataAdmin/CRUD/base_edit_form_macro.html.twig" as form_helper %}
+{% form_theme form "@SonataAdmin/Form/form_admin_fields.html.twig" %}
+
+{% block sonata_head_title %}
+    {% block title %}
+        {{ 'profile_edit.title'|trans({}, 'security') }}
+    {% endblock%}
+{% endblock%}
+
+{% block tab_menu %}{% endblock %}
+
+{% block actions %}{% endblock %}
+
+{% block form %}
+
+    {% set options = { action: security_profile_url, method: 'post' } %}
+    {% if admin_pool.getOption('form_type') == 'horizontal' %}
+        {% set options = options|merge({ attr: { class: 'form-horizontal' } }) %}
+    {% endif %}
+
+    {{ form_start(form, options|default({})) }}
+
+    {% if form.vars.errors|length > 0 %}
+        <div class="sonata-ba-form-error">
+            {{ form_errors(form) }}
+        </div>
+    {% endif %}
+
+    {% block sonata_pre_fieldsets %}
+        <div class="row">
+    {% endblock %}
+
+    {% block sonata_tab_content %}
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <h4 class="box-title">
+                                {{ 'fieldset.label_profile'|trans({}, 'admin') }}
+                            </h4>
+                        </div>
+                        <div class="box-body">
+                            <div class="sonata-ba-collapsed-fields">
+                                {{ form_widget(form) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block sonata_post_fieldsets %}
+        </div>
+    {% endblock %}
+
+    {{ form_rest(form) }}
+
+    {% block formactions %}
+        <div class="well well-small form-actions">
+            <button type="submit" class="btn btn-success" name="btn_update_and_edit"><i class="fa fa-save"></i> {{ 'btn_update'|trans({}, 'SonataAdminBundle') }}</button>
+        </div>
+    {% endblock formactions %}
+    </form>
+{% endblock %}
