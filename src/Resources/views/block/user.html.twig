@@ -1,9 +1,8 @@
 {% trans_default_domain 'security' %}
 
-<li role="presentation" class="user-header bg-light-blue">
-    <img src="{{ asset('design/admin/images/default_avatar.png') }}" class="img-circle" />
+<li role="presentation" class="user-header">
     <p>{{ app.user }}</p>
-    <p class="hidden">{{ app.user.email }}</p>
+    <p>{{ app.user.email }}</p>
 </li>
 <li role="presentation" class="user-footer">
     <div class="pull-left">
