@@ -2,14 +2,19 @@
 
 namespace Smart\AuthenticationBundle\Controller;
 
+use Smart\AuthenticationBundle\Security\Form\Type\ResetPasswordType;
 use Smart\AuthenticationBundle\Security\Form\Type\UserProfileType;
 use Smart\AuthenticationBundle\Form\Type\Security\ForgotPasswordType;
 use Smart\AuthenticationBundle\Security\Token;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Yokai\MessengerBundle\Sender\SenderInterface;
+use Yokai\SecurityTokenBundle\Exception\TokenNotFoundException;
+use Yokai\SecurityTokenBundle\Exception\TokenConsumedException;
+use Yokai\SecurityTokenBundle\Exception\TokenExpiredException;
 use Yokai\SecurityTokenBundle\Manager\TokenManagerInterface;
 
 /**
@@ -87,6 +92,70 @@ class AbstractSecurityController extends Controller
      *
      * @return Response
      */
+    public function resetPasswordAction(Request $request)
+    {
+        if ($this->getUser()) {
+            return $this->redirectToRoute($this->context . '_dashboard');
+        }
+
+        if (!$request->query->has('token')) {
+            $this->addFlash('error', 'flash.security.invalid_token');
+
+            return $this->redirectToRoute($this->context . '_security_login_form');
+        }
+
+        try {
+            $token = $this->getTokenManager()->get(Token::RESET_PASSWORD, $request->query->get('token'));
+        } catch (TokenNotFoundException $e) {
+            $this->addFlash('error', 'flash.security.token_not_found');
+            return $this->redirectToRoute($this->context . '_security_login_form');
+        } catch (TokenExpiredException $e) {
+            $this->addFlash('error', 'flash.security.token_expired');
+            return $this->redirectToRoute($this->context . '_security_login_form');
+        } catch (TokenConsumedException $e) {
+            $this->addFlash('error', 'flash.security.token_used');
+            return $this->redirectToRoute($this->context . '_security_login_form');
+        }
+
+        if (!$token) {
+            return $this->redirectToRoute($this->context . '_security_login_form');
+        }
+
+        /** @var UserInterface $user */
+        $user = $this->getTokenManager()->getUser($token);
+
+        $form =  $this->createForm(ResetPasswordType::class, $user);
+        $form->handleRequest($request);
+
+        if (!$form->isSubmitted() || !$form->isValid()) {
+            return $this->render(
+                $this->context . '/security/reset_password.html.twig',
+                [
+                    'token' => $token->getValue(),
+                    'form' => $form->createView(),
+                    'security_reset_password_route' => $this->context . '_security_reset_password'
+                ]
+            );
+        }
+
+        try {
+            if (null !== $user->getPlainPassword()) {
+                $this->updateUser($user);
+                $this->getTokenManager()->consume($token);
+            }
+            $this->addFlash('success', 'flash.reset_password.success');
+        } catch (Exception $e) {
+            $this->addFlash('error', 'flash.reset_password.error');
+        }
+
+        return $this->redirectToRoute($this->context . '_security_login_form');
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
     public function profileAction(Request $request)
     {
         $user = $this->getUser();
@@ -104,16 +173,7 @@ class AbstractSecurityController extends Controller
             ]);
         }
 
-        if (null !== $user->getPlainPassword()) {
-            $encoder = $this->get('security.password_encoder');
-            $user->setPassword(
-                $encoder->encodePassword($user, $user->getPlainPassword())
-            );
-        }
-
-        $manager = $this->getDoctrine()->getManager();
-        $manager->persist($user);
-        $manager->flush();
+        $this->updateUser($user);
 
         $this->addFlash('success', $this->translate('profile_edit.processed', [], 'security'));
 
@@ -154,5 +214,22 @@ class AbstractSecurityController extends Controller
     protected function getMessenger()
     {
         return $this->get('yokai_messenger.sender');
+    }
+
+    /**
+     * @param UserInterface $user
+     */
+    protected function updateUser(UserInterface $user)
+    {
+        if (null !== $user->getPlainPassword()) {
+            $encoder = $this->get('security.password_encoder');
+            $user->setPassword(
+                $encoder->encodePassword($user, $user->getPlainPassword())
+            );
+        }
+
+        $manager = $this->getDoctrine()->getManager();
+        $manager->persist($user);
+        $manager->flush();
     }
 }
