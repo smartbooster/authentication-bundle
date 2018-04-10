@@ -1,0 +1,6 @@
+
+sonata_admin:
+    extensions:
+        admin.extension.encode_password:
+            uses:
+                - Smart\AuthenticationBundle\Entity\User\UserTrait
