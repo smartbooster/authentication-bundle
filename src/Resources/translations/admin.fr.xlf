@@ -28,7 +28,7 @@
             </trans-unit>
             <trans-unit id="fieldset.label_profile">
                 <source>fieldset.label_profile</source>
-                <target>My compte</target>
+                <target>Mon compte</target>
             </trans-unit>
         </body>
     </file>

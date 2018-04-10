@@ -53,12 +53,4 @@ class UserProfileType extends AbstractType
             ])
         ;
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function getName()
-    {
-        return 'user_profile';
-    }
 }
