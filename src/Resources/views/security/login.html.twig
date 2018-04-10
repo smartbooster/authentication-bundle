@@ -13,7 +13,7 @@
         {{ flashes('danger', app.session.flashbag.get('error'), 'security') }}
 
         <div class="login-box-body">
-            <h1 class="text-center">SMART SONATA</h1>
+            {% block smartsonata_box_header %}<h1 class="text-center">SMART SONATA</h1>{% endblock %}
             <form action="{{ security_login_check_url }}" method="post">
                 <div class="form-group has-feedback">
                     <input type="text" name="_username" class="form-control" placeholder="{{ 'login.label_username'|trans({}, 'security') }}" required />
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="col-xs-6 text-right">
-                        {#<a href="{{ security_forgot_password_url }}">{{ 'login.action.forgot_password'|trans({}, 'security') }}</a>#}
+                        <a href="{{ security_forgot_password_url }}">{{ 'login.action.forgot_password'|trans({}, 'security') }}</a>
                     </div>
                 </div>
             </form>

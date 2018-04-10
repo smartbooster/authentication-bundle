@@ -1,0 +1,5 @@
+{% macro renderLink(url, content, additionalStyle = '') %}
+{% spaceless %}
+    <a href="{{ url }}" style="text-decoration: none;color:#428bca;{{ additionalStyle }}">{{ content }}</a>
+{% endspaceless %}
+{% endmacro %}

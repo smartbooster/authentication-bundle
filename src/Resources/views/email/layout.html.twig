@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="20" bgcolor="#F1F1F1" style="font-family: 'Helvetica Neue', Arial, sans-serif;font-size: 14px;line-height: 20px;">
+    <tr>
+        <td style="margin:0;padding:0;" align="center">
+            <table width="600px" border="0" cellspacing="0" cellpadding="0" bgcolor="#fff">
+                {% block pre_header %}{% endblock %}
+                {% block header %}
+                    <tr>
+                        <td width="410" style="text-align: right; padding: 20px 40px 0 0">
+                            {% block header_title %}{% endblock %}
+                        </td>
+                    </tr>
+                {% endblock %}
+                <tr>
+                    <td style="padding: 20px 40px 60px 40px;" colspan="2">
+                        {% block content %}{% endblock %}
+                        {% block footer %}{% endblock %}
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 0px 40px 20px 40px;" colspan="2">
+                        {% block bottom %}{% endblock %}
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

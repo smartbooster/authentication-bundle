@@ -28,7 +28,7 @@
             </trans-unit>
             <trans-unit id="login.action.forgot_password">
                 <source>login.action.forgot_password</source>
-                <target>Forgotten your password ?</target>
+                <target>Forgot password ?</target>
             </trans-unit>
             <trans-unit id="user.action.profile">
                 <source>user.action.profile</source>
@@ -42,6 +42,7 @@
                 <source>user.action.logout</source>
                 <target>Log out</target>
             </trans-unit>
+
             <trans-unit id="profile_edit.title">
                 <source>profile_edit.title</source>
                 <target>Edit your informations</target>
@@ -49,6 +50,27 @@
             <trans-unit id="profile_edit.processed">
                 <source>profile_edit.processed</source>
                 <target>Informations updated.</target>
+            </trans-unit>
+
+            <trans-unit id="forgot_password.title">
+                <source>forgot_password.title</source>
+                <target>Password request</target>
+            </trans-unit>
+            <trans-unit id="forgot_password.label_username">
+                <source>forgot_password.label_username</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="forgot_password.label_cancel">
+                <source>forgot_password.label_cancel</source>
+                <target>Cancel</target>
+            </trans-unit>
+            <trans-unit id="forgot_password.label_submit">
+                <source>forgot_password.label_submit</source>
+                <target>Request</target>
+            </trans-unit>
+            <trans-unit id="flash.forgot_password.success">
+                <source>flash.forgot_password.success</source>
+                <target>We sent you an email to reset your password.</target>
             </trans-unit>
         </body>
     </file>
