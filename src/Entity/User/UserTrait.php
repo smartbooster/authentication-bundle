@@ -50,20 +50,6 @@ trait UserTrait
     protected $lastName;
 
     /**
-     * @var DateTime
-     *
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $passwordRequestedAt;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $passwordRequestToken;
-
-    /**
      * @var array
      *
      * @ORM\Column(type="json_array")
@@ -187,56 +173,6 @@ trait UserTrait
         $this->plainPassword = null;
 
         return;
-    }
-
-    /**
-     * @param int $ttl
-     *
-     * @return bool
-     */
-    public function isPasswordRequestNonExpired($ttl)
-    {
-        return $this->passwordRequestedAt instanceof \DateTime && $this->passwordRequestedAt->getTimestamp() + $ttl > time();
-    }
-
-    /**
-     * @return DateTime
-     */
-    public function getPasswordRequestedAt()
-    {
-        return $this->passwordRequestedAt;
-    }
-
-    /**
-     * @param DateTime $passwordRequestedAt
-     *
-     * @return $this
-     */
-    public function setPasswordRequestedAt($passwordRequestedAt)
-    {
-        $this->passwordRequestedAt = $passwordRequestedAt;
-
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPasswordRequestToken()
-    {
-        return $this->passwordRequestToken;
-    }
-
-    /**
-     * @param string $passwordRequestToken
-     *
-     * @return $this
-     */
-    public function setPasswordRequestToken($passwordRequestToken)
-    {
-        $this->passwordRequestToken = $passwordRequestToken;
-
-        return $this;
     }
     
     /**

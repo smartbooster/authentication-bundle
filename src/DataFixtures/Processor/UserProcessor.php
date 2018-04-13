@@ -3,6 +3,7 @@
 namespace Smart\AuthenticationBundle\DataFixtures\Processor;
 
 use Nelmio\Alice\ProcessorInterface;
+use Smart\AuthenticationBundle\Security\SmartUserInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -29,7 +30,7 @@ class UserProcessor implements ProcessorInterface
      */
     public function preProcess($object)
     {
-        if (!$object instanceof UserInterface) {
+        if (!$object instanceof SmartUserInterface) {
             return;
         }
 

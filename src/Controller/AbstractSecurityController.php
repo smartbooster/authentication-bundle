@@ -5,6 +5,7 @@ namespace Smart\AuthenticationBundle\Controller;
 use Smart\AuthenticationBundle\Security\Form\Type\ResetPasswordType;
 use Smart\AuthenticationBundle\Security\Form\Type\UserProfileType;
 use Smart\AuthenticationBundle\Form\Type\Security\ForgotPasswordType;
+use Smart\AuthenticationBundle\Security\SmartUserInterface;
 use Smart\AuthenticationBundle\Security\Token;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -117,11 +118,7 @@ class AbstractSecurityController extends Controller
             return $this->redirectToRoute($this->context . '_security_login_form');
         }
 
-        if (!$token) {
-            return $this->redirectToRoute($this->context . '_security_login_form');
-        }
-
-        /** @var UserInterface $user */
+        /** @var SmartUserInterface $user */
         $user = $this->getTokenManager()->getUser($token);
 
         $form =  $this->createForm(ResetPasswordType::class, $user);
@@ -144,7 +141,7 @@ class AbstractSecurityController extends Controller
                 $this->getTokenManager()->consume($token);
             }
             $this->addFlash('success', 'flash.reset_password.success');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             $this->addFlash('error', 'flash.reset_password.error');
         }
 
@@ -158,6 +155,7 @@ class AbstractSecurityController extends Controller
      */
     public function profileAction(Request $request)
     {
+        /** @var SmartUserInterface $user */
         $user = $this->getUser();
 
         $form = $this->createForm(UserProfileType::class, $user, []);
@@ -217,9 +215,9 @@ class AbstractSecurityController extends Controller
     }
 
     /**
-     * @param UserInterface $user
+     * @param SmartUserInterface $user
      */
-    protected function updateUser(UserInterface $user)
+    protected function updateUser(SmartUserInterface $user)
     {
         if (null !== $user->getPlainPassword()) {
             $encoder = $this->get('security.password_encoder');

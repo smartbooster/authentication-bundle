@@ -20,7 +20,6 @@ class ForgotPasswordType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'forgot_password.label_email',
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Email(),

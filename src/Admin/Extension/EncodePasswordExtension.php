@@ -2,6 +2,7 @@
 
 namespace Smart\AuthenticationBundle\Admin\Extension;
 
+use Smart\AuthenticationBundle\Security\SmartUserInterface;
 use Sonata\AdminBundle\Admin\AbstractAdminExtension;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -42,9 +43,9 @@ class EncodePasswordExtension extends AbstractAdminExtension
     }
 
     /**
-     * @param UserInterface $user
+     * @param SmartUserInterface $user
      */
-    private function encodePassword(UserInterface $user)
+    private function encodePassword(SmartUserInterface $user)
     {
         if ("" === trim($user->getPlainPassword())) {
             return;
