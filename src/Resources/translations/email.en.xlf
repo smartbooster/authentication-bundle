@@ -27,6 +27,25 @@
                 <source>forgot_password.reset_password.link</source>
                 <target>Reset my password</target>
             </trans-unit>
+
+            <trans-unit id="security.user_created.subject">
+                <source>security.user_created.subject</source>
+                <target>To complete your account, please initialize your password</target>
+            </trans-unit>
+            <trans-unit id="user_created.welcome">
+                <source>user_created.welcome</source>
+                <target><![CDATA[
+                    Hello,
+                ]]></target>
+            </trans-unit>
+            <trans-unit id="user_created.action.click">
+                <source>user_created.action.click</source>
+                <target>To initialize your password click on the link below :</target>
+            </trans-unit>
+            <trans-unit id="user_created.reset_password.link">
+                <source>user_created.reset_password.link</source>
+                <target>Initialize my password</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
