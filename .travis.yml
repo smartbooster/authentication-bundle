@@ -8,9 +8,10 @@ cache:
     - $HOME/.composer/cache
 
 before_install:
+  - echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - composer self-update
 
-install: composer update --prefer-source
+install: composer install -o
 
 script:
   - vendor/bin/phpcs --ignore=/vendor/*,/Tests/Resources/app/* --extensions=php --encoding=utf-8 --standard=PSR2 -np .

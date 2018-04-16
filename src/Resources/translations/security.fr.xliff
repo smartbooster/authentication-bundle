@@ -50,6 +50,73 @@
                 <source>profile_edit.processed</source>
                 <target>Vos informations ont été mise à jour.</target>
             </trans-unit>
+
+            <trans-unit id="forgot_password.title">
+                <source>forgot_password.title</source>
+                <target>Demande de mot de passe</target>
+            </trans-unit>
+            <trans-unit id="forgot_password.label_username">
+                <source>forgot_password.label_username</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="forgot_password.label_cancel">
+                <source>forgot_password.label_cancel</source>
+                <target>Annuler</target>
+            </trans-unit>
+            <trans-unit id="forgot_password.label_submit">
+                <source>forgot_password.label_submit</source>
+                <target>Demander</target>
+            </trans-unit>
+
+            <trans-unit id="flash.forgot_password.success">
+                <source>flash.forgot_password.success</source>
+                <target>Nous vous avons envoyé un mot de passe pour réinitialiser votre mot de passe.</target>
+            </trans-unit>
+
+            <trans-unit id="flash.security.invalid_token">
+                <source>flash.security.invalid_token</source>
+                <target>Jeton de sécurité invalide</target>
+            </trans-unit>
+            <trans-unit id="flash.security.token_not_found">
+                <source>flash.security.token_not_found</source>
+                <target>Jeton de sécurité introuvable</target>
+            </trans-unit>
+            <trans-unit id="flash.security.token_expired">
+                <source>flash.security.token_expired</source>
+                <target>Votre jeton de sécurité est expiré</target>
+            </trans-unit>
+            <trans-unit id="flash.security.token_used">
+                <source>flash.security.token_used</source>
+                <target>Jeton de sécurité à déjà été utilisé</target>
+            </trans-unit>
+            <trans-unit id="reset_password.title">
+                <source>reset_password.title</source>
+                <target>Ré-initialiser votre mot de passe</target>
+            </trans-unit>
+            <trans-unit id="reset_password.label_password">
+                <source>reset_password.label_password</source>
+                <target>Nouveau mot de passe</target>
+            </trans-unit>
+            <trans-unit id="reset_password.label_password_confirmation">
+                <source>reset_password.label_password_confirmation</source>
+                <target>Confirmer le mot de passe</target>
+            </trans-unit>
+            <trans-unit id="reset_password.label_submit">
+                <source>reset_password.label_submit</source>
+                <target>Changer</target>
+            </trans-unit>
+            <trans-unit id="reset_password.password_must_match">
+                <source>reset_password.password_must_match</source>
+                <target>Votre mot de passe et sa confirmation ne sont pas les mêmes.</target>
+            </trans-unit>
+            <trans-unit id="flash.reset_password.success">
+                <source>flash.reset_password.success</source>
+                <target>Votre mot de passe a été ré-initialisé.</target>
+            </trans-unit>
+            <trans-unit id="flash.reset_password.error">
+                <source>flash.reset_password.error</source>
+                <target>Une erreur s'est produite lors de la réinitialisation de votre mot de passe.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

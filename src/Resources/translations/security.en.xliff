@@ -28,7 +28,7 @@
             </trans-unit>
             <trans-unit id="login.action.forgot_password">
                 <source>login.action.forgot_password</source>
-                <target>Forgotten your password ?</target>
+                <target>Forgot password ?</target>
             </trans-unit>
             <trans-unit id="user.action.profile">
                 <source>user.action.profile</source>
@@ -42,6 +42,7 @@
                 <source>user.action.logout</source>
                 <target>Log out</target>
             </trans-unit>
+
             <trans-unit id="profile_edit.title">
                 <source>profile_edit.title</source>
                 <target>Edit your informations</target>
@@ -49,6 +50,72 @@
             <trans-unit id="profile_edit.processed">
                 <source>profile_edit.processed</source>
                 <target>Informations updated.</target>
+            </trans-unit>
+
+            <trans-unit id="forgot_password.title">
+                <source>forgot_password.title</source>
+                <target>Password request</target>
+            </trans-unit>
+            <trans-unit id="forgot_password.label_username">
+                <source>forgot_password.label_username</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="forgot_password.label_cancel">
+                <source>forgot_password.label_cancel</source>
+                <target>Cancel</target>
+            </trans-unit>
+            <trans-unit id="forgot_password.label_submit">
+                <source>forgot_password.label_submit</source>
+                <target>Request</target>
+            </trans-unit>
+            <trans-unit id="flash.forgot_password.success">
+                <source>flash.forgot_password.success</source>
+                <target>We sent you an email to reset your password.</target>
+            </trans-unit>
+
+            <trans-unit id="flash.security.invalid_token">
+                <source>flash.security.invalid_token</source>
+                <target>Security token invalid</target>
+            </trans-unit>
+            <trans-unit id="flash.security.token_not_found">
+                <source>flash.security.token_not_found</source>
+                <target>Security token not found</target>
+            </trans-unit>
+            <trans-unit id="flash.security.token_expired">
+                <source>flash.security.token_expired</source>
+                <target>Security token expired</target>
+            </trans-unit>
+            <trans-unit id="flash.security.token_used">
+                <source>flash.security.token_used</source>
+                <target>Security token already used</target>
+            </trans-unit>
+            <trans-unit id="reset_password.title">
+                <source>reset_password.title</source>
+                <target>Reset your password</target>
+            </trans-unit>
+            <trans-unit id="reset_password.label_password">
+                <source>reset_password.label_password</source>
+                <target>New password</target>
+            </trans-unit>
+            <trans-unit id="reset_password.label_password_confirmation">
+                <source>reset_password.label_password_confirmation</source>
+                <target>Confirm the password</target>
+            </trans-unit>
+            <trans-unit id="reset_password.label_submit">
+                <source>reset_password.label_submit</source>
+                <target>Change</target>
+            </trans-unit>
+            <trans-unit id="reset_password.password_must_match">
+                <source>reset_password.password_must_match</source>
+                <target>Your password and confirmation are not the same.</target>
+            </trans-unit>
+            <trans-unit id="flash.reset_password.success">
+                <source>flash.reset_password.success</source>
+                <target>Your password has been reset.</target>
+            </trans-unit>
+            <trans-unit id="flash.reset_password.error">
+                <source>flash.reset_password.error</source>
+                <target>A problem occurs during your password reset.</target>
             </trans-unit>
         </body>
     </file>
