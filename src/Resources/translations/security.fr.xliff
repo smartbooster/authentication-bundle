@@ -70,7 +70,7 @@
 
             <trans-unit id="flash.forgot_password.success">
                 <source>flash.forgot_password.success</source>
-                <target>Nous vous avons envoyé un mot de passe pour réinitialiser votre mot de passe.</target>
+                <target>Nous vous avons envoyé un email pour réinitialiser votre mot de passe.</target>
             </trans-unit>
 
             <trans-unit id="flash.security.invalid_token">
