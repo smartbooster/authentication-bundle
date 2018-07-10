@@ -4,7 +4,7 @@ namespace Smart\AuthenticationBundle\Security\Processor;
 
 use DateTime;
 use Doctrine\ORM\EntityManager;
-use Smart\AuthenticationBundle\Entity\User\UserTrait;
+use Smart\AuthenticationBundle\Security\LastLoginInterface;
 
 /**
  * @author Mathieu Ducrot <mathieu.ducrot@pia-production.fr>
@@ -29,7 +29,7 @@ class LastLoginProcessor
      */
     public function process($object)
     {
-        if (!isset(class_uses($object)[UserTrait::class])) {
+        if (!$object instanceof LastLoginInterface) {
             return;
         }
 

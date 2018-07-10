@@ -2,7 +2,7 @@
 
 namespace Smart\AuthenticationBundle\Security\EventSubscriber;
 
-use Smart\AuthenticationBundle\Entity\User\UserTrait;
+use Smart\AuthenticationBundle\Security\LastLoginInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
@@ -51,7 +51,7 @@ class SecuritySubscriber implements EventSubscriberInterface
 
         $user = $token->getUser();
 
-        if (!isset(class_uses($user)[UserTrait::class])) {
+        if (!$user instanceof LastLoginInterface) {
             return;
         }
 
