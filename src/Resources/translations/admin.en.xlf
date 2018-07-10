@@ -18,6 +18,10 @@
                 <source>form.label_last_name</source>
                 <target>Lastname</target>
             </trans-unit>
+            <trans-unit id="form.label_last_login">
+                <source>form.label_last_login</source>
+                <target>Last login</target>
+            </trans-unit>
             <trans-unit id="form.label_password">
                 <source>form.label_password</source>
                 <target>Password</target>

@@ -57,6 +57,13 @@ trait UserTrait
     private $roles;
 
     /**
+     * @var DateTime
+     *
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $lastLogin;
+
+    /**
      * @return string
      */
     public function __toString()
@@ -287,5 +294,25 @@ trait UserTrait
             // see section on salt below
             // $this->salt
             ) = unserialize($serialized);
+    }
+
+    /**
+     * @return null|DateTime
+     */
+    public function getLastLogin()
+    {
+        return $this->lastLogin;
+    }
+
+    /**
+     * @param null|DateTime $lastLogin
+     *
+     * @return $this
+     */
+    public function setLastLogin($lastLogin = null)
+    {
+        $this->lastLogin = $lastLogin;
+
+        return $this;
     }
 }
