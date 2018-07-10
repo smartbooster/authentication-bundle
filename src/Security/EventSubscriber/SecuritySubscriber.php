@@ -34,7 +34,8 @@ class SecuritySubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            SecurityEvents::INTERACTIVE_LOGIN => 'onInteractiveLogin'
+            SecurityEvents::SWITCH_USER => 'onSwitchUser',
+            SecurityEvents::INTERACTIVE_LOGIN => 'onInteractiveLogin',
         ];
     }
 
@@ -61,5 +62,19 @@ class SecuritySubscriber implements EventSubscriberInterface
         }
 
         $this->lastLoginProcessor->process($user);
+    }
+
+    /**
+     * @param SwitchUserEvent $event
+     */
+    public function onSwitchUser(SwitchUserEvent $event)
+    {
+        $flashBag = $event->getRequest()->getSession()->getFlashBag();
+
+        if ($event->getRequest()->query->get('_switch_user') == '_exit') {
+            $flashBag->add('sonata_flash_success', 'impersonate.exit_message');
+        } else {
+            $flashBag->add('sonata_flash_success', 'impersonate.switch_message');
+        }
     }
 }
