@@ -67,12 +67,14 @@
                 <source>forgot_password.label_submit</source>
                 <target>Demander</target>
             </trans-unit>
-
             <trans-unit id="flash.forgot_password.success">
                 <source>flash.forgot_password.success</source>
                 <target>Nous vous avons envoyé un email pour réinitialiser votre mot de passe.</target>
             </trans-unit>
-
+            <trans-unit id="flash.forgot_password.unknown">
+                <source>flash.forgot_password.unknown</source>
+                <target>Cet email ne correspond à aucun utilisateur.</target>
+            </trans-unit>
             <trans-unit id="flash.security.invalid_token">
                 <source>flash.security.invalid_token</source>
                 <target>Jeton de sécurité invalide</target>

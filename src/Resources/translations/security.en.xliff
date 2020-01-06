@@ -72,7 +72,10 @@
                 <source>flash.forgot_password.success</source>
                 <target>We sent you an email to reset your password.</target>
             </trans-unit>
-
+            <trans-unit id="flash.forgot_password.unknown">
+                <source>flash.forgot_password.unknown</source>
+                <target>This email is unknown.</target>
+            </trans-unit>
             <trans-unit id="flash.security.invalid_token">
                 <source>flash.security.invalid_token</source>
                 <target>Security token invalid</target>
