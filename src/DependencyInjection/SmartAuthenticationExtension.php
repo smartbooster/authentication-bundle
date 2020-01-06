@@ -18,7 +18,7 @@ class SmartAuthenticationExtension extends Extension implements PrependExtension
     {
         $loader = new XmlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../Resources/config')
+            new FileLocator(__DIR__ . '/../Resources/config')
         );
         $loader->load('admin_extension.xml');
         $loader->load('security.xml');
@@ -28,7 +28,7 @@ class SmartAuthenticationExtension extends Extension implements PrependExtension
     {
         $loader = new YamlFileLoader(
             $container,
-            new FileLocator(__DIR__.'/../Resources/config')
+            new FileLocator(__DIR__ . '/../Resources/config')
         );
         $loader->load('config.yml');
     }

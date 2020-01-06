@@ -86,7 +86,6 @@ class AbstractSecurityController extends Controller
 
                 $this->addFlash('success', 'flash.forgot_password.success');
             }
-
         } catch (UsernameNotFoundException $e) {
             $this->addFlash('error', 'flash.forgot_password.unknown');
         }

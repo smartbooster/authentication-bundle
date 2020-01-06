@@ -1,7 +1,7 @@
 CHANGELOG for 1.x
 ===================
 
-## to be released - (yyyy-mm-dd)
+## v1.0.2 - (2020-01-06)
 
 ### Fixed
 
@@ -10,3 +10,5 @@ CHANGELOG for 1.x
 ### Changed
 
 ### Added
+
+- Add QA tools (without phpstan will be added next release)
