@@ -10,6 +10,7 @@ use Smart\AuthenticationBundle\Security\Token;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Yokai\MessengerBundle\Sender\SenderInterface;
@@ -66,23 +67,27 @@ class AbstractSecurityController extends Controller
             );
         }
 
-        $user = $this->get($this->context . '_user_provider')->loadUserByUsername($form->get('email')->getData());
+        try {
+            $user = $this->get($this->context . '_user_provider')->loadUserByUsername($form->get('email')->getData());
 
-        $this->addFlash('success', 'flash.forgot_password.success');
+            if ($user instanceof SmartUserInterface) {
+                $token = $this->getTokenManager()->create(Token::RESET_PASSWORD, $user);
 
-        if ($user) {
-            $token = $this->getTokenManager()->create(Token::RESET_PASSWORD, $user);
+                $this->getMessenger()->send(
+                    'security.forgot_password',
+                    $user,
+                    [
+                        '{context}' => $this->context,
+                        'token' => $token->getValue(),
+                        'domain' => $this->container->getParameter('domain'),
+                        'security_reset_password_route' => $this->context . '_security_reset_password'
+                    ]
+                );
 
-            $this->getMessenger()->send(
-                'security.forgot_password',
-                $user,
-                [
-                    '{context}' => $this->context,
-                    'token' => $token->getValue(),
-                    'domain' => $this->container->getParameter('domain'),
-                    'security_reset_password_route' => $this->context . '_security_reset_password'
-                ]
-            );
+                $this->addFlash('success', 'flash.forgot_password.success');
+            }
+        } catch (UsernameNotFoundException $e) {
+            $this->addFlash('error', 'flash.forgot_password.unknown');
         }
 
         return $this->redirectToRoute($this->context . '_security_login_form');
