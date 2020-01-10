@@ -46,6 +46,10 @@
                 <source>user_created.reset_password.link</source>
                 <target>Initialize my password</target>
             </trans-unit>
+            <trans-unit id="security.token.information">
+                <source>security.token.information</source>
+                <target>Please note, for security reasons, these links are for single use only. Please delete these emails once the action has been performed.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

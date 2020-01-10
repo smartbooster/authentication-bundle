@@ -4,6 +4,7 @@ namespace Smart\AuthenticationBundle\Security\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -32,7 +33,7 @@ class UserProfileType extends AbstractType
                 'plainPassword',
                 RepeatedType::class,
                 [
-                    'type'               => 'password',
+                    'type'               => PasswordType::class,
                     'required'           => false,
                     'first_options'      => ['label' => 'form.label_password'],
                     'second_options'     => ['label' => 'form.label_password_confirmation'],
