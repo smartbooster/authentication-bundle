@@ -11,7 +11,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Yokai\MessengerBundle\Sender\SenderInterface;
 use Yokai\SecurityTokenBundle\Exception\TokenNotFoundException;
@@ -29,7 +28,18 @@ class AbstractSecurityController extends Controller
      * @var string
      */
     protected $context;
-        
+
+    /** @var TokenManagerInterface */
+    protected $tokenManager;
+    /** @var SenderInterface */
+    protected $messenger;
+
+    public function __construct(TokenManagerInterface $tokenManager, SenderInterface $messenger)
+    {
+        $this->tokenManager = $tokenManager;
+        $this->messenger = $messenger;
+    }
+
     /**
      * @return Response
      */
@@ -71,15 +81,15 @@ class AbstractSecurityController extends Controller
             $user = $this->get($this->context . '_user_provider')->loadUserByUsername($form->get('email')->getData());
 
             if ($user instanceof SmartUserInterface) {
-                $token = $this->getTokenManager()->create(Token::RESET_PASSWORD, $user);
+                $token = $this->tokenManager->create(Token::RESET_PASSWORD, $user);
 
-                $this->getMessenger()->send(
+                $this->messenger->send(
                     'security.forgot_password',
                     $user,
                     [
                         '{context}' => $this->context,
                         'token' => $token->getValue(),
-                        'domain' => $this->container->getParameter('domain'),
+                        'domain' => $this->getDomain(),
                         'security_reset_password_route' => $this->context . '_security_reset_password'
                     ]
                 );
@@ -111,7 +121,7 @@ class AbstractSecurityController extends Controller
         }
 
         try {
-            $token = $this->getTokenManager()->get(Token::RESET_PASSWORD, $request->query->get('token'));
+            $token = $this->tokenManager->get(Token::RESET_PASSWORD, $request->query->get('token'));
         } catch (TokenNotFoundException $e) {
             $this->addFlash('error', 'flash.security.token_not_found');
             return $this->redirectToRoute($this->context . '_security_login_form');
@@ -124,7 +134,7 @@ class AbstractSecurityController extends Controller
         }
 
         /** @var SmartUserInterface $user */
-        $user = $this->getTokenManager()->getUser($token);
+        $user = $this->tokenManager->getUser($token);
 
         $form =  $this->createForm(ResetPasswordType::class, $user);
         $form->handleRequest($request);
@@ -143,7 +153,7 @@ class AbstractSecurityController extends Controller
         try {
             if (null !== $user->getPlainPassword()) {
                 $this->updateUser($user);
-                $this->getTokenManager()->consume($token);
+                $this->tokenManager->consume($token);
             }
             $this->addFlash('success', 'flash.reset_password.success');
         } catch (\Exception $e) {
@@ -204,22 +214,6 @@ class AbstractSecurityController extends Controller
     }
 
     /**
-     * @return TokenManagerInterface
-     */
-    private function getTokenManager()
-    {
-        return $this->get('yokai_security_token.token_manager');
-    }
-
-    /**
-     * @return SenderInterface
-     */
-    protected function getMessenger()
-    {
-        return $this->get('yokai_messenger.sender');
-    }
-
-    /**
      * @param SmartUserInterface $user
      */
     protected function updateUser(SmartUserInterface $user)
@@ -234,5 +228,15 @@ class AbstractSecurityController extends Controller
         $manager = $this->getDoctrine()->getManager();
         $manager->persist($user);
         $manager->flush();
+    }
+
+    /**
+     * Override this method if your application use custom domain
+     *
+     * @return string
+     */
+    protected function getDomain()
+    {
+        return $this->container->getParameter('domain');
     }
 }

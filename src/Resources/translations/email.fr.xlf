@@ -12,7 +12,7 @@
                     Bonjour,<br />
                     <br />
                     Vous avez fait une demande de réinitialisation de mot de passe pour accéder à votre compte.<br />
-                    Si vous n'êtes pas à l'origine de cette demande, vous pouvez simplement ignorez cet email.
+                    Si vous n'êtes pas à l'origine de cette demande, vous pouvez simplement ignorer cet email.
                 ]]></target>
             </trans-unit>
             <trans-unit id="forgot_password.action.click">
@@ -45,6 +45,10 @@
             <trans-unit id="user_created.reset_password.link">
                 <source>user_created.reset_password.link</source>
                 <target>Initialiser mon mot de passe</target>
+            </trans-unit>
+            <trans-unit id="security.token.information">
+                <source>security.token.information</source>
+                <target>Attention, par mesure de sécurité ces liens sont à usage unique. Merci de supprimer ces mails une fois l'action effectuée.</target>
             </trans-unit>
         </body>
     </file>

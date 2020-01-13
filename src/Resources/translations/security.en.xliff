@@ -77,20 +77,32 @@
                 <target>This email is unknown.</target>
             </trans-unit>
             <trans-unit id="flash.security.invalid_token">
-                <source>flash.security.invalid_token</source>
-                <target>Security token invalid</target>
+            <source>flash.security.invalid_token</source>
+                <target><![CDATA[
+                    The link you used is invalid.<br>
+                    If you do not remember your password, please use the link "Forgot password ?"
+                ]]></target>
             </trans-unit>
             <trans-unit id="flash.security.token_not_found">
                 <source>flash.security.token_not_found</source>
-                <target>Security token not found</target>
+                <target><![CDATA[
+                    The link you used is incorrect.<br>
+                    If you do not remember your password, please use the link "Forgot password ?"
+                ]]></target>
             </trans-unit>
             <trans-unit id="flash.security.token_expired">
                 <source>flash.security.token_expired</source>
-                <target>Security token expired</target>
+                <target><![CDATA[
+                    This single use link has expired.<br>
+                    If you do not remember your password, please use the link "Forgot password ?"
+                ]]></target>
             </trans-unit>
             <trans-unit id="flash.security.token_used">
                 <source>flash.security.token_used</source>
-                <target>Security token already used</target>
+                <target><![CDATA[
+                    This single use link has already been used.<br>
+                    If you do not remember your password, please use the link "Forgot password ?"
+                ]]></target>
             </trans-unit>
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>

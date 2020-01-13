@@ -11,12 +11,17 @@
     <p>
         {{ 'user_created.action.click'|trans }}
         <br />
-        {% set url = app.request.scheme ~ '://admin.' ~ domain ~ path(security_reset_password_route, { token: token }) %}
-        {{ macro.renderLink(url, 'user_created.reset_password.link'|trans) }}
+        {% set url = 'https://' ~ domain ~ path(security_reset_password_route, { token: token }) %}
+        {% block link %}
+            {{ macro.renderLink(url, 'user_created.reset_password.link'|trans) }}
+        {% endblock %}
     </p>
     <p>
         {{ 'forgot_password.action.copy_paste'|trans }}
         <br />
         {{ macro.renderLink(url, url) }}
+    </p>
+    <p>
+        {{ 'security.token.information'|trans }}
     </p>
 {% endblock %}
