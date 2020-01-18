@@ -22,6 +22,7 @@ class SmartAuthenticationExtension extends Extension implements PrependExtension
         );
         $loader->load('admin_extension.xml');
         $loader->load('security.xml');
+        $loader->load('fixtures.xml');
     }
 
     public function prepend(ContainerBuilder $container)
