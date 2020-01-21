@@ -2,13 +2,12 @@
 
 namespace Smart\AuthenticationBundle\DataFixtures\Processor;
 
-use Nelmio\Alice\ProcessorInterface;
+use Fidry\AliceDataFixtures\ProcessorInterface;
 use Smart\AuthenticationBundle\Security\SmartUserInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @author Nicolas Bastien <nicolas.bastien@smartbooster.io>
+ * Nicolas Bastien <nicolas.bastien@smartbooster.io>
  */
 class UserProcessor implements ProcessorInterface
 {
@@ -28,7 +27,7 @@ class UserProcessor implements ProcessorInterface
     /**
      * @inheritdoc
      */
-    public function preProcess($object)
+    public function preProcess(string $fixtureId, $object): void
     {
         if (!$object instanceof SmartUserInterface) {
             return;
@@ -40,7 +39,7 @@ class UserProcessor implements ProcessorInterface
     /**
      * @inheritdoc
      */
-    public function postProcess($object)
+    public function postProcess(string $fixtureId, $object): void
     {
     }
 }

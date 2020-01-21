@@ -29,9 +29,14 @@ class AbstractSecurityController extends Controller
      */
     protected $context;
 
-    /** @var TokenManagerInterface */
+    /**
+     * @var TokenManagerInterface
+     */
     protected $tokenManager;
-    /** @var SenderInterface */
+
+    /**
+     * @var SenderInterface
+     */
     protected $messenger;
 
     public function __construct(TokenManagerInterface $tokenManager, SenderInterface $messenger)
@@ -41,9 +46,51 @@ class AbstractSecurityController extends Controller
     }
 
     /**
+     * @deprecated
      * @return Response
      */
     public function loginAction()
+    {
+        return $this->login();
+    }
+
+    /**
+     * @deprecated
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function forgotPasswordAction(Request $request)
+    {
+        return $this->forgotPassword($request);
+    }
+
+    /**
+     * @deprecated
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function resetPasswordAction(Request $request)
+    {
+        return $this->resetPassword($request);
+    }
+
+    /**
+     * @deprecated
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function profileAction(Request $request)
+    {
+        return $this->profile($request);
+    }
+
+    /**
+     * @return Response
+     */
+    public function login()
     {
         $helper = $this->getAuthenticationUtils();
 
@@ -61,7 +108,7 @@ class AbstractSecurityController extends Controller
      *
      * @return Response
      */
-    public function forgotPasswordAction(Request $request)
+    public function forgotPassword(Request $request)
     {
         $form =  $this->createForm(ForgotPasswordType::class);
         $form->handleRequest($request);
@@ -108,7 +155,7 @@ class AbstractSecurityController extends Controller
      *
      * @return Response
      */
-    public function resetPasswordAction(Request $request)
+    public function resetPassword(Request $request)
     {
         if ($this->getUser()) {
             return $this->redirectToRoute($this->context . '_dashboard');
@@ -168,7 +215,7 @@ class AbstractSecurityController extends Controller
      *
      * @return Response
      */
-    public function profileAction(Request $request)
+    public function profile(Request $request)
     {
         /** @var SmartUserInterface $user */
         $user = $this->getUser();
