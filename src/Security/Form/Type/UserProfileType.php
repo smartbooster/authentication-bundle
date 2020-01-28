@@ -17,7 +17,7 @@ class UserProfileType extends AbstractType
     /**
      * @inheritdoc
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('email', EmailType::class, [
@@ -38,6 +38,7 @@ class UserProfileType extends AbstractType
                     'first_options'      => ['label' => 'form.label_password'],
                     'second_options'     => ['label' => 'form.label_password_confirmation'],
                     'translation_domain' => $options['translation_domain'],
+                    'invalid_message' => 'reset_password.password_must_match',
                 ]
             );
         ;
@@ -46,7 +47,7 @@ class UserProfileType extends AbstractType
     /**
      * @inheritdoc
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
             ->setDefaults([

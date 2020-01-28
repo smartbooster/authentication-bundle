@@ -250,7 +250,7 @@ class AbstractSecurityController extends Controller
 
     /**
      * @param string      $id         The message id (may also be an object that can be cast to string)
-     * @param array       $parameters An array of parameters for the message
+     * @param array<array>       $parameters An array of parameters for the message
      * @param string|null $domain     The domain for the message or null to use the default
      *
      * @return string
@@ -262,6 +262,8 @@ class AbstractSecurityController extends Controller
 
     /**
      * @param SmartUserInterface $user
+     *
+     * @return void
      */
     protected function updateUser(SmartUserInterface $user)
     {

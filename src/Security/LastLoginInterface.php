@@ -8,12 +8,14 @@ namespace Smart\AuthenticationBundle\Security;
 interface LastLoginInterface
 {
     /**
-     * @return null|DateTime
+     * @return null|\DateTime
      */
     public function getLastLogin();
 
     /**
-     * @param  null|DateTime $plainPassword
+     * @param  null|\DateTime $lastLogin
+     *
+     * @return void
      */
     public function setLastLogin($lastLogin = null);
 }

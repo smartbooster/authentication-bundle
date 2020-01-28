@@ -29,7 +29,7 @@ class EncodePasswordExtension extends AbstractAdminExtension
     /**
      * {@inheritDoc}
      */
-    public function preUpdate(AdminInterface $admin, $user)
+    public function preUpdate(AdminInterface $admin, $user): void
     {
         $this->encodePassword($user);
     }
@@ -37,7 +37,7 @@ class EncodePasswordExtension extends AbstractAdminExtension
     /**
      * {@inheritDoc}
      */
-    public function prePersist(AdminInterface $admin, $user)
+    public function prePersist(AdminInterface $admin, $user): void
     {
         $this->encodePassword($user);
     }
@@ -45,7 +45,7 @@ class EncodePasswordExtension extends AbstractAdminExtension
     /**
      * @param SmartUserInterface $user
      */
-    private function encodePassword(SmartUserInterface $user)
+    private function encodePassword(SmartUserInterface $user): void
     {
         if ("" === trim($user->getPlainPassword())) {
             return;

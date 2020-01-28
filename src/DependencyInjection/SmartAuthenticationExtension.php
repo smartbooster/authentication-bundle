@@ -14,6 +14,12 @@ use Symfony\Component\Config\FileLocator;
  */
 class SmartAuthenticationExtension extends Extension implements PrependExtensionInterface
 {
+    /**
+     * @param array<array> $configs
+     * @param ContainerBuilder $container
+     * @throws \Exception
+     * @return void
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new XmlFileLoader(
@@ -25,6 +31,11 @@ class SmartAuthenticationExtension extends Extension implements PrependExtension
         $loader->load('fixtures.xml');
     }
 
+    /**
+     * @param ContainerBuilder $container
+     * @throws \Exception
+     * @return void
+     */
     public function prepend(ContainerBuilder $container)
     {
         $loader = new YamlFileLoader(
