@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="reset_password.password_must_match">
+                <source>reset_password.password_must_match</source>
+                <target>Your password and confirmation are not the same.</target>
+            </trans-unit>
+            <!-- IsPasswordSafe Validation -->
+            <trans-unit id="is_password_safe.length_error">
+                <source>is_password_safe.length_error</source>
+                <target>Password too short. It must be at least 10 characters long.</target>
+            </trans-unit>
+            <trans-unit id="is_password_safe.missing_lower_character_error">
+                <source>is_password_safe.missing_lower_character_error</source>
+                <target>It must contain at least one lowercase letter.</target>
+            </trans-unit>
+            <trans-unit id="is_password_safe.missing_upper_character_error">
+                <source>is_password_safe.missing_upper_character_error</source>
+                <target>It must contain at least one capital letter.</target>
+            </trans-unit>
+            <trans-unit id="is_password_safe.missing_number_error">
+                <source>is_password_safe.missing_number_error</source>
+                <target>It must contain at least one number.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

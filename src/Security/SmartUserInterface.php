@@ -13,6 +13,8 @@ interface SmartUserInterface extends UserInterface
      * Set the password used to authenticate the user.
      *
      * @param  string $password encoded password
+     *
+     * @return void
      */
     public function setPassword($password);
 
@@ -27,6 +29,8 @@ interface SmartUserInterface extends UserInterface
      * Set plain password (this should not be stored)
      *
      * @param  string $plainPassword
+     *
+     * @return void
      */
     public function setPlainPassword($plainPassword);
 }

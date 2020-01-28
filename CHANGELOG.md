@@ -1,6 +1,14 @@
 CHANGELOG for 1.x
 ===================
 
+## v1.XX
+
+### Added
+
+- Add IsPasswordSafe constraints (#19)[https://github.com/smartbooster/authentication-bundle/pull/19]
+- Refactor Userprocessor to use Fidry\AliceDataFixtures\ProcessorInterface (#18)[https://github.com/smartbooster/authentication-bundle/pull/18]
+- Migrate to sf 4.4 action namming with 3.4 compatibility
+
 ## v1.0.2 - (2020-01-06)
 
 ### Fixed

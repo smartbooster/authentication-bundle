@@ -25,7 +25,9 @@ class LastLoginProcessor
     }
 
     /**
-     * @param $object
+     * @param LastLoginInterface $object
+     *
+     * @return void
      */
     public function process($object)
     {

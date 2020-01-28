@@ -4,6 +4,7 @@ namespace Smart\AuthenticationBundle\Security\EventSubscriber;
 
 use Smart\AuthenticationBundle\Security\LastLoginInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\Event\SwitchUserEvent;
@@ -41,6 +42,8 @@ class SecuritySubscriber implements EventSubscriberInterface
 
     /**
      * @param InteractiveLoginEvent $event
+     *
+     * @return void
      */
     public function onInteractiveLogin(InteractiveLoginEvent $event)
     {
@@ -66,10 +69,14 @@ class SecuritySubscriber implements EventSubscriberInterface
 
     /**
      * @param SwitchUserEvent $event
+     *
+     * @return void
      */
     public function onSwitchUser(SwitchUserEvent $event)
     {
-        $flashBag = $event->getRequest()->getSession()->getFlashBag();
+        /** @var Session $session */
+        $session = $event->getRequest()->getSession();
+        $flashBag = $session->getFlashBag();
 
         if ($event->getRequest()->query->get('_switch_user') == '_exit') {
             $flashBag->add('sonata_flash_success', 'impersonate.exit_message');

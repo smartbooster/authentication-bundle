@@ -3,7 +3,7 @@
 # Qualimetry rules
 
 qa: qualimetry
-qualimetry: checkstyle lint.php composer.validate metrics
+qualimetry: checkstyle lint.php composer.validate phpstan metrics
 
 cs: checkstyle
 checkstyle:

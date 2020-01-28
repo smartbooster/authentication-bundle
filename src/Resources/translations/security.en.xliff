@@ -108,6 +108,17 @@
                 <source>reset_password.title</source>
                 <target>Reset your password</target>
             </trans-unit>
+            <trans-unit id="reset_password.help">
+                <source>reset_password.help</source>
+                <target><![CDATA[
+                    <p>In order to guarantee the security of your data, please choose a new password respecting the following rules:</p>
+                    <ul>
+                        <li>- be at least 10 characters long ;</li>
+                        <li>- contain at least one lower case, one upper case and one number.</li>
+                    </ul>
+                    <p><i>We recommend that you either make passwords that are easy to remember but long, or complex passwords that go through a secure password manager.</i></p>
+                ]]></target>
+            </trans-unit>
             <trans-unit id="reset_password.label_password">
                 <source>reset_password.label_password</source>
                 <target>New password</target>
