@@ -181,7 +181,7 @@ trait UserTrait
 
         return;
     }
-    
+
     /**
      * @inheritdoc
      */
