@@ -2,17 +2,20 @@
 
 namespace Smart\AuthenticationBundle\Controller;
 
+use Smart\AuthenticationBundle\Email\ForgotPasswordEmail;
 use Smart\AuthenticationBundle\Security\Form\Type\ResetPasswordType;
 use Smart\AuthenticationBundle\Security\Form\Type\UserProfileType;
 use Smart\AuthenticationBundle\Form\Type\Security\ForgotPasswordType;
 use Smart\AuthenticationBundle\Security\SmartUserInterface;
 use Smart\AuthenticationBundle\Security\Token;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Yokai\MessengerBundle\Sender\SenderInterface;
 use Yokai\SecurityTokenBundle\Exception\TokenNotFoundException;
 use Yokai\SecurityTokenBundle\Exception\TokenConsumedException;
 use Yokai\SecurityTokenBundle\Exception\TokenExpiredException;
@@ -20,6 +23,9 @@ use Yokai\SecurityTokenBundle\Manager\TokenManagerInterface;
 
 /**
  * @author Nicolas Bastien <nicolas.bastien@smartbooster.io>
+ *
+ * Fix phpstan error cf. https://github.com/phpstan/phpstan/issues/3200
+ * @property ContainerInterface $container
  */
 class AbstractSecurityController extends Controller
 {
@@ -35,14 +41,14 @@ class AbstractSecurityController extends Controller
     protected $tokenManager;
 
     /**
-     * @var SenderInterface
+     * @var MailerInterface
      */
-    protected $messenger;
+    protected $mailer;
 
-    public function __construct(TokenManagerInterface $tokenManager, SenderInterface $messenger)
+    public function __construct(TokenManagerInterface $tokenManager, MailerInterface $mailer)
     {
         $this->tokenManager = $tokenManager;
-        $this->messenger = $messenger;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -130,16 +136,14 @@ class AbstractSecurityController extends Controller
             if ($user instanceof SmartUserInterface) {
                 $token = $this->tokenManager->create(Token::RESET_PASSWORD, $user);
 
-                $this->messenger->send(
-                    'security.forgot_password',
-                    $user,
-                    [
-                        '{context}' => $this->context,
-                        'token' => $token->getValue(),
-                        'domain' => $this->getDomain(),
-                        'security_reset_password_route' => $this->context . '_security_reset_password'
-                    ]
-                );
+                $this->mailer->send($this->getForgotPasswordEmail([
+                    'from' => $this->container->getParameter('app.mail_from'),
+                    'subject' => $this->translate('security.forgot_password.subject', [], 'email'),
+                    'context' => $this->context,
+                    'token' => $token->getValue(),
+                    'domain' => $this->getDomain(),
+                    'security_reset_password_route' => $this->context . '_security_reset_password'
+                ], $user->getEmail()));
 
                 $this->addFlash('success', 'flash.forgot_password.success');
             }
@@ -148,6 +152,19 @@ class AbstractSecurityController extends Controller
         }
 
         return $this->redirectToRoute($this->context . '_security_login_form');
+    }
+
+    /**
+     * This provide a default email for the forgot password
+     *
+     * @param array<mixed> $parameters
+     * @param string $email
+     *
+     * @return TemplatedEmail
+     */
+    protected function getForgotPasswordEmail(array $parameters, $email)
+    {
+        return new ForgotPasswordEmail($parameters, $email);
     }
 
     /**

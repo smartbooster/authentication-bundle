@@ -16,7 +16,7 @@ class UserTraitTest extends TestCase
         $user = new User();
         $user->setLastName('Doe')
             ->setFirstName('John');
-        
+
         $this->assertEquals('John Doe', $user->getFullName());
     }
 }

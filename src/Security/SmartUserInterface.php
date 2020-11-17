@@ -33,4 +33,11 @@ interface SmartUserInterface extends UserInterface
      * @return void
      */
     public function setPlainPassword($plainPassword);
+
+    /**
+     * Ensure the user has a getEmail method
+     *
+     * @return string
+     */
+    public function getEmail();
 }

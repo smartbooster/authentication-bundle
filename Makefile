@@ -27,3 +27,9 @@ metrics:
 
 phpstan:
 	vendor/bin/phpstan analyse src --level=6 -c phpstan.neon
+
+#================================
+#           TEST
+
+phpunit:
+	vendor/bin/phpunit tests
