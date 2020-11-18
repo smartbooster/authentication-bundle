@@ -1,3 +1,7 @@
+# ====================
+# Development
+ssh:
+	docker run --rm -it --user=dev -v $(PWD):/var/www smartbooster/php-fpm:builder bash
 
 # ====================
 # Qualimetry rules
