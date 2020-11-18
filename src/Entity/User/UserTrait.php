@@ -14,6 +14,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 trait UserTrait
 {
     /**
+     * @var int
+     */
+    protected $id;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=false, unique=true)
@@ -31,7 +36,7 @@ trait UserTrait
     private $password;
 
     /**
-     * @var string
+     * @var string|null
      */
     private $plainPassword;
 
