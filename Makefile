@@ -9,9 +9,10 @@ ssh:
 qa: qualimetry
 qualimetry: checkstyle lint.php composer.validate phpstan metrics
 
+# https://cs.symfony.com/
 cs: checkstyle
 checkstyle:
-	vendor/bin/phpcs --extensions=php -n --standard=PSR12 --report=full src tests
+	php-cs-fixer fix --dry-run --format checkstyle
 
 lint.php:
 	find src -type f -name "*.php" -exec php -l {} \;
