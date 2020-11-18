@@ -1,7 +1,18 @@
 CHANGELOG for 1.x
 ===================
 
-## v1.XX
+## v1.1
+
+### Added
+
+### Fixed
+
+### Changed
+
+- update dependencies
+- migrate from travis to github actions
+
+## v1.0
 
 ### Added
 
