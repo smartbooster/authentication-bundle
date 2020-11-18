@@ -4,6 +4,13 @@
  * Based on https://github.com/symfony/panther/blob/master/.php_cs.dist
  */
 
+$header = <<<'HEADER'
+This file is part of smartbooster/authentication-bundle.
+(c) Nicolas Bastien <nicolas.bastien@smartbooster.io>
+For the full copyright and license information, please view the LICENSE
+file that was distributed with this source code.
+HEADER;
+
 $finder = PhpCsFixer\Finder::create()->in(__DIR__);
 
 return PhpCsFixer\Config::create()
