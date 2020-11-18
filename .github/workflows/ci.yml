@@ -83,6 +83,6 @@ jobs:
               env:
                   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
               run: |
-                  vendor/bin/phpunit --coverage-clover coverage.xml
+                  vendor/bin/phpunit ./tests --coverage-clover coverage.xml
             - name: "Upload coverage to Codecov"
               uses: codecov/codecov-action@v1
