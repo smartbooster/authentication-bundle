@@ -105,7 +105,7 @@ trait UserTrait
     /**
      * {@inheritdoc}
      */
-    public function getUsername()
+    public function getUsername(): string
     {
         return $this->email;
     }
@@ -113,7 +113,7 @@ trait UserTrait
     /**
      * {@inheritdoc}
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -133,7 +133,7 @@ trait UserTrait
     /**
      * {@inheritdoc}
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -181,7 +181,7 @@ trait UserTrait
     /**
      * {@inheritdoc}
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         $this->plainPassword = null;
     }

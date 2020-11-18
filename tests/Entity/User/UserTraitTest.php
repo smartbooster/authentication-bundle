@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 class UserTraitTest extends TestCase
 {
-    public function testFullname()
+    public function testFullname(): void
     {
         $user = new User();
         $user->setLastName('Doe')

@@ -31,7 +31,7 @@ metrics:
 	vendor/bin/phpmetrics --report-html=build/phpmetrics.html src
 
 phpstan:
-	vendor/bin/phpstan analyse src --level=6 -c phpstan.neon
+	vendor/bin/phpstan analyse -c phpstan.neon
 
 #================================
 #           TEST

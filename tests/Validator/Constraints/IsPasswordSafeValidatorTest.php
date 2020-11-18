@@ -25,7 +25,7 @@ class IsPasswordSafeValidatorTest extends AbstractValidatorTest
      * @param string $expectedMessage
      * @dataProvider failPasswordProvider
      */
-    public function testValidationFail($value, $expectedMessage)
+    public function testValidationFail($value, $expectedMessage): void
     {
         $constraint = new IsPasswordSafe();
         $validator = $this->initValidator($expectedMessage);
@@ -52,7 +52,7 @@ class IsPasswordSafeValidatorTest extends AbstractValidatorTest
      * @param string $value
      * @dataProvider validPasswordProvider
      */
-    public function testValidationOk($value)
+    public function testValidationOk($value): void
     {
         $constraint = new IsPasswordSafe();
         $validator = $this->initValidator();

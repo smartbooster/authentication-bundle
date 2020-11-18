@@ -53,7 +53,7 @@ jobs:
             - name: PHPStan
               run: phpstan analyse --no-progress
 
-    phpunit-lowest:
+    phpunit:
         runs-on: ubuntu-latest
         name: PHP 7.4 Test on ubuntu-latest
         steps:
@@ -78,7 +78,7 @@ jobs:
                   restore-keys: ${{ runner.os }}-composer-
 
             - name: Install dependencies
-              run: composer update --prefer-dist --prefer-lowest
+              run: composer install --prefer-dist
 
             - name: "Run tests with phpunit/phpunit"
               env:
