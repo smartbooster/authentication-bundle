@@ -79,5 +79,10 @@ jobs:
             - name: Install dependencies
               run: composer update --prefer-dist --prefer-lowest
 
-            - name: Run tests
-              run: vendor/bin/phpunit tests --coverage-clover=coverage.clover
+            - name: "Run tests with phpunit/phpunit"
+              env:
+                  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+              run: |
+                  vendor/bin/phpunit --coverage-clover coverage.xml
+            - name: "Upload coverage to Codecov"
+              uses: codecov/codecov-action@v1

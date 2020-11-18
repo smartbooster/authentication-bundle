@@ -9,6 +9,9 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/smartbooster/authentication-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/smartbooster/authentication-bundle/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/smartbooster/authentication-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/smartbooster/authentication-bundle/?branch=master)
 
+[![Build Status](https://github.com/smartbooster/authentication-bundle/.github/workflows/ci.yml/badge.svg)](https://github.com/smartbooster/authentication-bundle/actions)
+[![Coverage](https://codecov.io/gh/smartbooster/authentication-bundle/branch/master/graph/badge.svg)](https://codecov.io/gh/smartbooster/authentication-bundle)
+
 ## Installation
 
 ### Add the bundle as dependency with Composer
