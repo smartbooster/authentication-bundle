@@ -16,9 +16,6 @@ class LastLoginProcessor
      */
     private $em;
 
-    /**
-     * @param EntityManager $em
-     */
     public function __construct(EntityManager $em)
     {
         $this->em = $em;

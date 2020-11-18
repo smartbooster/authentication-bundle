@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class ForgotPasswordType extends AbstractType
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -23,13 +23,13 @@ class ForgotPasswordType extends AbstractType
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Email(),
-                ]
+                ],
             ])
         ;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver): void
     {

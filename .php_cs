@@ -24,11 +24,11 @@ return PhpCsFixer\Config::create()
         'braces' => [
             'allow_single_line_closure' => true,
         ],
-        'declare_strict_types' => true,
-        'header_comment' => [
-            'header' => $header,
-            'location' => 'after_open',
-        ],
+        //'declare_strict_types' => true,
+        //'header_comment' => [
+        //    'header' => $header,
+        //    'location' => 'after_open',
+        //],
         'modernize_types_casting' => true,
         'native_function_invocation' => ['include' => ['@compiler_optimized'], 'scope' => 'namespaced'],
         'no_extra_consecutive_blank_lines' => [

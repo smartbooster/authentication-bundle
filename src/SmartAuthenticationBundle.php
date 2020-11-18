@@ -9,5 +9,4 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class SmartAuthenticationBundle extends Bundle
 {
-
 }

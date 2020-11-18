@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Violation\ConstraintViolationBuilder;
 abstract class AbstractValidatorTest extends TestCase
 {
     /**
-     * Return an instance from the validator to test
+     * Return an instance from the validator to test.
      *
      * @return ConstraintValidator
      */
@@ -37,7 +37,7 @@ abstract class AbstractValidatorTest extends TestCase
             $context->expects($this->atLeastOnce())
                 ->method('buildViolation')
                 ->with($this->equalTo($expectedMessage))
-                ->will($this->returnValue($builder))
+                ->willReturn($builder)
             ;
         } else {
             $context->expects($this->never())->method('buildViolation');

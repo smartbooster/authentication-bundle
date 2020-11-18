@@ -7,7 +7,7 @@ use Fidry\AliceDataFixtures\Loader\PurgerLoader;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Nicolas Bastien <nicolas.bastien@smartbooster.io>
+ * Nicolas Bastien <nicolas.bastien@smartbooster.io>.
  */
 abstract class AbstractFixtures extends Fixture
 {
@@ -21,9 +21,6 @@ abstract class AbstractFixtures extends Fixture
      */
     protected $fixturesDir;
 
-    /**
-     * @param ContainerInterface $container
-     */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
@@ -34,7 +31,7 @@ abstract class AbstractFixtures extends Fixture
      */
     protected function getFixturesDir()
     {
-        return $this->container->getParameter('kernel.project_dir') . '/fixtures/';
+        return $this->container->getParameter('kernel.project_dir').'/fixtures/';
     }
 
     /**

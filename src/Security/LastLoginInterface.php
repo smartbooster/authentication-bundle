@@ -3,17 +3,17 @@
 namespace Smart\AuthenticationBundle\Security;
 
 /**
- * Add methods for handling last login
+ * Add methods for handling last login.
  */
 interface LastLoginInterface
 {
     /**
-     * @return null|\DateTime
+     * @return \DateTime|null
      */
     public function getLastLogin();
 
     /**
-     * @param  null|\DateTime $lastLogin
+     * @param \DateTime|null $lastLogin
      *
      * @return void
      */

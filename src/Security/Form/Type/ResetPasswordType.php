@@ -14,7 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class ResetPasswordType extends AbstractType
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -28,20 +28,20 @@ class ResetPasswordType extends AbstractType
                     'required' => true,
                     'invalid_message' => 'reset_password.password_must_match',
                     'first_options' => ['label' => false],
-                    'second_options' => ['label' => false]
+                    'second_options' => ['label' => false],
                 ]
             )
         ;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
             ->setDefaults([
-                'translation_domain' => 'admin'
+                'translation_domain' => 'admin',
             ])
         ;
     }

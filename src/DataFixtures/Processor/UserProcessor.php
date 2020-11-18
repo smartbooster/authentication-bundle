@@ -7,7 +7,7 @@ use Smart\AuthenticationBundle\Security\SmartUserInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * Nicolas Bastien <nicolas.bastien@smartbooster.io>
+ * Nicolas Bastien <nicolas.bastien@smartbooster.io>.
  */
 class UserProcessor implements ProcessorInterface
 {
@@ -16,16 +16,13 @@ class UserProcessor implements ProcessorInterface
      */
     private $encoder;
 
-    /**
-     * @param UserPasswordEncoderInterface $encoder
-     */
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function preProcess(string $fixtureId, $object): void
     {
@@ -37,7 +34,7 @@ class UserProcessor implements ProcessorInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function postProcess(string $fixtureId, $object): void
     {

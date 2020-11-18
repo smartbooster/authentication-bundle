@@ -15,43 +15,42 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class UserProfileType extends AbstractType
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'form.label_email'
+                'label' => 'form.label_email',
             ])
             ->add('firstName', null, [
-                'label' => 'form.label_first_name'
+                'label' => 'form.label_first_name',
             ])
             ->add('lastName', null, [
-                'label' => 'form.label_last_name'
+                'label' => 'form.label_last_name',
             ])
             ->add(
                 'plainPassword',
                 RepeatedType::class,
                 [
-                    'type'               => PasswordType::class,
-                    'required'           => false,
-                    'first_options'      => ['label' => 'form.label_password'],
-                    'second_options'     => ['label' => 'form.label_password_confirmation'],
+                    'type' => PasswordType::class,
+                    'required' => false,
+                    'first_options' => ['label' => 'form.label_password'],
+                    'second_options' => ['label' => 'form.label_password_confirmation'],
                     'translation_domain' => $options['translation_domain'],
                     'invalid_message' => 'reset_password.password_must_match',
                 ]
             );
-        ;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver
             ->setDefaults([
-                'translation_domain' => 'admin'
+                'translation_domain' => 'admin',
             ])
         ;
     }

@@ -10,8 +10,9 @@ class ForgotPasswordEmail extends TemplatedEmail
 {
     /**
      * ForgotPasswordEmail constructor.
+     *
      * @param array<mixed> $parameters
-     * @param string $email
+     * @param string       $email
      */
     public function __construct($parameters, $email)
     {

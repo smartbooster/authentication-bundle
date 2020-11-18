@@ -7,7 +7,7 @@ use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
 /**
- * https://www.ssi.gouv.fr/uploads/IMG/pdf/NP_MDP_NoteTech.pdf
+ * https://www.ssi.gouv.fr/uploads/IMG/pdf/NP_MDP_NoteTech.pdf.
  */
 class IsPasswordSafeValidator extends ConstraintValidator
 {
@@ -18,7 +18,6 @@ class IsPasswordSafeValidator extends ConstraintValidator
 
     /**
      * @param mixed $value
-     * @param Constraint $constraint
      *
      * @return void
      */
@@ -34,11 +33,11 @@ class IsPasswordSafeValidator extends ConstraintValidator
             return;
         }
 
-        if (!is_string($value)) {
+        if (!\is_string($value)) {
             throw new UnexpectedTypeException($value, 'string');
         }
 
-        if (strlen($value) < self::MINIMAL_STRING_LENGTH) {
+        if (\strlen($value) < self::MINIMAL_STRING_LENGTH) {
             $this->context->buildViolation($constraint->lengthMessage)->addViolation();
         }
 
