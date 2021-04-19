@@ -1,6 +1,15 @@
 
 sonata_admin:
+    templates:
+        user_block: "@SmartAuthentication/block/user.html.twig"
+    security:
+        handler: sonata.admin.security.handler.role
     extensions:
         admin.extension.encode_password:
             uses:
                 - Smart\AuthenticationBundle\Entity\User\UserTrait
+
+yokai_security_token:
+    tokens:
+        reset_password:
+            duration: +1 month
