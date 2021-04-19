@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  build_test_lastest:
+    runs-on: ubuntu-latest
+    name: Build and test on lastest php-fpm:builder
+    container: smartbooster/php-fpm:builder
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install
+        run: composer install --prefer-dist
+
+      - name: Qualimetry
+        run: make qa
+
+      - name: Phunit
+        run: make phpunit
+
+  build_test_7_3:
+    runs-on: ubuntu-latest
+    name: Build and test on php-fpm:7.3-builder
+    container: smartbooster/php-fpm:7.3-builder
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install
+        run: composer install --prefer-dist
+
+      - name: Qualimetry
+        run: make qa
+
+      - name: Phunit
+        run: make phpunit
+
