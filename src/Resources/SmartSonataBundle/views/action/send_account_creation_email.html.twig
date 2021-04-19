@@ -1,0 +1,5 @@
+{% if admin.id(object) and admin.isGranted('EDIT', object) %}
+    <a href="{{ admin.generateObjectUrl('sendAccountCreationEmail', object) }}" class="btn btn-xs btn-default" title="{{ 'action.send_account_creation_email'|trans({}, 'admin') }}">
+        <i class="fa fa-send-o"></i>
+    </a>
+{% endif %}

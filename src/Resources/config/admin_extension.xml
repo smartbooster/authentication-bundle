@@ -13,5 +13,10 @@
             <argument type="string">impersonate</argument>
             <tag name="sonata.admin.extension" />
         </service>
+
+        <service id="admin.extension.action_send_account_creation_email" class="Smart\SonataBundle\Admin\Extension\ActionExtension">
+            <argument type="string">send_account_creation_email</argument>
+            <tag name="sonata.admin.extension" />
+        </service>
     </services>
 </container>
