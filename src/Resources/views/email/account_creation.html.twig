@@ -1,0 +1,20 @@
+{% extends '@SmartAuthentication/email/layout.html.twig' %}
+
+{% trans_default_domain 'email' %}
+
+{% import '@SmartAuthentication/macros/email.html.twig' as macro %}
+
+{% block content %}
+    <p>
+        {{ 'user_created.welcome'|trans|raw }}
+    </p>
+    <p>
+        {{ 'account_creation.action.click'|trans }}
+        <br />
+        {% set url = 'https://' ~ domain ~ path(security_reset_password_route, { token: token }) %}
+        {{ macro.renderLink(url, url) }}
+    </p>
+    <p>
+        {{ 'security.token.information'|trans }}
+    </p>
+{% endblock %}

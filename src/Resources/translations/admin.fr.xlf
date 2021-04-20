@@ -39,6 +39,14 @@
                 <source>action.impersonate</source>
                 <target>Se connecter en tant que</target>
             </trans-unit>
+            <trans-unit id="action.send_account_creation_email">
+                <source>action.send_account_creation_email</source>
+                <target>Envoyer l'email de création de compte</target>
+            </trans-unit>
+            <trans-unit id="send_account_creation_email.success">
+                <source>send_account_creation_email.success</source>
+                <target>Email de création de compte envoyé à {email}</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

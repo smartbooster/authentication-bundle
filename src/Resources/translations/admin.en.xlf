@@ -39,6 +39,14 @@
                 <source>action.impersonate</source>
                 <target>Log in as</target>
             </trans-unit>
+            <trans-unit id="action.send_account_creation_email">
+                <source>action.send_account_creation_email</source>
+                <target>Send the account creation email</target>
+            </trans-unit>
+            <trans-unit id="send_account_creation_email.success">
+                <source>send_account_creation_email.success</source>
+                <target>Account creation email sent to {email}</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
