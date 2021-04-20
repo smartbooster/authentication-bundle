@@ -8,5 +8,10 @@
         <service id="admin.extension.encode_password" class="Smart\AuthenticationBundle\Admin\Extension\EncodePasswordExtension">
             <argument type="service" id="security.password_encoder" />
         </service>
+
+        <service id="admin.extension.action_impersonate" class="Smart\SonataBundle\Admin\Extension\ActionExtension">
+            <argument type="string">impersonate</argument>
+            <tag name="sonata.admin.extension" />
+        </service>
     </services>
 </container>

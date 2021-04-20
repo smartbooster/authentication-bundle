@@ -149,6 +149,8 @@ class AbstractSecurityController extends Controller
             }
         } catch (UsernameNotFoundException $e) {
             $this->addFlash('error', 'flash.forgot_password.unknown');
+
+            return $this->redirectToRoute($this->context . '_security_forgot_password');
         }
 
         return $this->redirectToRoute($this->context . '_security_login_form');

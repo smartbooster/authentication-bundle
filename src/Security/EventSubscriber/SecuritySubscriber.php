@@ -10,6 +10,7 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\Event\SwitchUserEvent;
 use Symfony\Component\Security\Http\SecurityEvents;
 use Smart\AuthenticationBundle\Security\Processor\LastLoginProcessor;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @author Mathieu Ducrot <mathieu.ducrot@pia-production.fr>
@@ -22,11 +23,17 @@ class SecuritySubscriber implements EventSubscriberInterface
     private $lastLoginProcessor;
 
     /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    /**
      * @param LastLoginProcessor $lastLoginProcessor
      */
-    public function __construct(LastLoginProcessor $lastLoginProcessor)
+    public function __construct(LastLoginProcessor $lastLoginProcessor, TranslatorInterface $translator)
     {
         $this->lastLoginProcessor = $lastLoginProcessor;
+        $this->translator = $translator;
     }
 
     /**
@@ -79,9 +86,9 @@ class SecuritySubscriber implements EventSubscriberInterface
         $flashBag = $session->getFlashBag();
 
         if ($event->getRequest()->query->get('_switch_user') == '_exit') {
-            $flashBag->add('sonata_flash_success', 'impersonate.exit_message');
+            $flashBag->add('sonata_flash_success', $this->translator->trans('impersonate.exit_message'));
         } else {
-            $flashBag->add('sonata_flash_success', 'impersonate.switch_message');
+            $flashBag->add('sonata_flash_success', $this->translator->trans('impersonate.switch_message'));
         }
     }
 }
