@@ -21,13 +21,16 @@ class UserProfileType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'form.label_email'
+                'label' => 'form.label_email',
+                'attr' => ['autocomplete' => 'off'],
             ])
             ->add('firstName', null, [
-                'label' => 'form.label_first_name'
+                'label' => 'form.label_first_name',
+                'attr' => ['autocomplete' => 'off'],
             ])
             ->add('lastName', null, [
-                'label' => 'form.label_last_name'
+                'label' => 'form.label_last_name',
+                'attr' => ['autocomplete' => 'off'],
             ])
             ->add(
                 'plainPassword',
@@ -39,6 +42,7 @@ class UserProfileType extends AbstractType
                     'second_options'     => ['label' => 'form.label_password_confirmation'],
                     'translation_domain' => $options['translation_domain'],
                     'invalid_message' => 'reset_password.password_must_match',
+                    'attr' => ['autocomplete' => 'off'],
                 ]
             );
         ;
