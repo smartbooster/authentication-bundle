@@ -10,7 +10,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * @author Mathieu Ducrot <mathieu.ducrot@pia-production.fr>
+ * @author Mathieu Ducrot <mathieu.ducrot@smartbooster.io>
  */
 class UserProfileType extends AbstractType
 {

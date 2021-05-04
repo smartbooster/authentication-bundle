@@ -13,7 +13,7 @@ use Smart\AuthenticationBundle\Security\Processor\LastLoginProcessor;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
- * @author Mathieu Ducrot <mathieu.ducrot@pia-production.fr>
+ * @author Mathieu Ducrot <mathieu.ducrot@smartbooster.io>
  */
 class SecuritySubscriber implements EventSubscriberInterface
 {

@@ -11,7 +11,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * @author Mathieu Ducrot <mathieu.ducrot@pia-production.fr>
+ * @author Mathieu Ducrot <mathieu.ducrot@smartbooster.io>
  */
 class SmartAuthenticationExtension extends Extension implements PrependExtensionInterface
 {

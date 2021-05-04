@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @author Mathieu Ducrot <mathieu.ducrot@pia-production.fr>
+ * @author Mathieu Ducrot <mathieu.ducrot@smartbooster.io>
  */
 class EncodePasswordExtension extends AbstractAdminExtension
 {
