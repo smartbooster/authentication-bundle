@@ -8,6 +8,10 @@ CHANGELOG for 1.x
 - [[#30](https://github.com/smartbooster/authentication-bundle/pull/30)] Add NelmioSecurityBundle dependancie to enhance security overall
 - [[#30](https://github.com/smartbooster/authentication-bundle/pull/30)] Add autocomplete="off" on security form
 
+### Fixed
+
+- [[#31](https://github.com/smartbooster/authentication-bundle/issues/31)] Fix default bundle config loading by using prependExtensionConfig
+
 ## v1.1.1 - (2021-04-20)
 
 ### Added
