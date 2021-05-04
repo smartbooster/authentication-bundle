@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Smart\AuthenticationBundle\Security\LastLoginInterface;
 
 /**
- * @author Mathieu Ducrot <mathieu.ducrot@pia-production.fr>
+ * @author Mathieu Ducrot <mathieu.ducrot@smartbooster.io>
  */
 class LastLoginProcessor
 {

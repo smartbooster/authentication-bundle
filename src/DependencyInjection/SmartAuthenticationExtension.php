@@ -8,9 +8,10 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Yaml\Yaml;
 
 /**
- * @author Mathieu Ducrot <mathieu.ducrot@pia-production.fr>
+ * @author Mathieu Ducrot <mathieu.ducrot@smartbooster.io>
  */
 class SmartAuthenticationExtension extends Extension implements PrependExtensionInterface
 {
@@ -38,14 +39,14 @@ class SmartAuthenticationExtension extends Extension implements PrependExtension
      */
     public function prepend(ContainerBuilder $container)
     {
-        $loader = new YamlFileLoader(
-            $container,
-            new FileLocator(__DIR__ . '/../Resources/config')
-        );
-        $loader->load('config.yml');
+        $config = Yaml::parse(file_get_contents(__DIR__ . '/../Resources/config/config.yml'));
+
+        foreach ($config as $name => $extension) {
+            $container->prependExtensionConfig($name, $extension);
+        }
 
         // Override bundle template from another bundle in Symfony 4/5 https://stackoverflow.com/a/52693472
-        $container->loadFromExtension('twig', array(
+        $container->prependExtensionConfig('twig', array(
             'paths' => array(
                 '%kernel.project_dir%/vendor/smartbooster/authentication-bundle/src/Resources/SmartSonataBundle/views' => 'SmartSonata',
             ),

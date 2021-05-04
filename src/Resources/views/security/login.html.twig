@@ -16,11 +16,11 @@
             {% block smartsonata_box_header %}<h1 class="text-center">SMART SONATA</h1>{% endblock %}
             <form action="{{ security_login_check_url }}" method="post">
                 <div class="form-group has-feedback">
-                    <input type="text" name="_username" class="form-control" placeholder="{{ 'login.label_username'|trans({}, 'security') }}" required />
+                    <input type="text" name="_username" class="form-control" autocomplete="off" placeholder="{{ 'login.label_username'|trans({}, 'security') }}" required />
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" name="_password" class="form-control" placeholder="{{ 'login.label_password'|trans({}, 'security') }}" required />
+                    <input type="password" name="_password" class="form-control" autocomplete="off" placeholder="{{ 'login.label_password'|trans({}, 'security') }}" required />
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row margin-bottom">
@@ -32,7 +32,7 @@
                     <div class="col-xs-6">
                         <div class="icheck">
                             <label>
-                                <input type="checkbox" name="_remember_me"> {{ 'login.label_remember'|trans({}, 'security') }}
+                                <input type="checkbox" name="_remember_me" autocomplete="off"> {{ 'login.label_remember'|trans({}, 'security') }}
                             </label>
                         </div>
                     </div>
