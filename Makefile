@@ -1,5 +1,19 @@
 
 # ====================
+# Docker
+up:
+	docker-compose up
+
+down:
+	docker-compose down
+
+ps:
+	docker-compose ps
+
+ssh:
+	docker exec -it --user=dev authenticationbundle-docker-php bash
+
+# ====================
 # Qualimetry rules
 
 .PHONY: qa qualimetry

@@ -1,3 +1,5 @@
 /vendor/
 composer.lock
 /build/
+coverage.*
+.php_cs.cache

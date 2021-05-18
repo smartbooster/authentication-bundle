@@ -9,11 +9,32 @@ on:
 jobs:
   build_test_lastest:
     runs-on: ubuntu-latest
-    name: Build and test on lastest php-fpm:builder
-    container: smartbooster/php-fpm:builder
+    name: Build and test on php-fpm:${{ matrix.php }}-builder
+    container: smartbooster/php-fpm:${{ matrix.php }}-builder
+    strategy:
+      matrix:
+        php: [ 7.3, 7.4 ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Check PHP Version
+        run: php -v
+
+      # —— Composer 🧙‍️ —————————————————————————————————————————————————————————
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
 
       - name: Install
         run: composer install --prefer-dist
@@ -21,23 +42,10 @@ jobs:
       - name: Qualimetry
         run: make qa
 
-      - name: Phunit
-        run: make phpunit
+      - name: Phpunit
+        run: XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-clover coverage.xml --coverage-filter=src tests
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
-  build_test_7_3:
-    runs-on: ubuntu-latest
-    name: Build and test on php-fpm:7.3-builder
-    container: smartbooster/php-fpm:7.3-builder
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Install
-        run: composer install --prefer-dist
-
-      - name: Qualimetry
-        run: make qa
-
-      - name: Phunit
-        run: make phpunit
-
+      - name: "Upload coverage to Codecov"
+        uses: codecov/codecov-action@v1

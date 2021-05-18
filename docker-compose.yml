@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  php:
+    container_name: authenticationbundle-docker-php
+    image: smartbooster/php-fpm:builder
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:/var/www
