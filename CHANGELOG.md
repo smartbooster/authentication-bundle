@@ -1,6 +1,12 @@
 CHANGELOG for 1.x
 ===================
 
+## v1.1.3 - (2021-07-06)
+
+### Added
+
+- [[#33](https://github.com/smartbooster/authentication-bundle/issues/33)] Add a ControllerTrait for the admin.extension.action_send_account_creation_email
+
 ## v1.1.2 - (2021-05-04)
 
 ### Added
