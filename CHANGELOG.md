@@ -5,7 +5,7 @@ CHANGELOG for 1.x
 
 ### Updated
 
-- [[#35](https://github.com/smartbooster/parameter-bundle/issues/35)] Update dependencies to allow SF5
+- [[#35](https://github.com/smartbooster/authentication-bundle/issues/35)] Update dependencies to allow SF5
 
 ## v1.1.3 - (2021-07-06)
 
