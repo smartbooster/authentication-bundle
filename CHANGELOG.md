@@ -1,6 +1,12 @@
 CHANGELOG for 1.x
 ===================
 
+## v1.1.4 - (2021-10-14)
+
+### Updated
+
+- [[#35](https://github.com/smartbooster/parameter-bundle/issues/35)] Update dependencies to allow SF5
+
 ## v1.1.3 - (2021-07-06)
 
 ### Added

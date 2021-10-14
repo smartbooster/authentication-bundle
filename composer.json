@@ -15,7 +15,7 @@
   "require": {
     "smartbooster/sonata-bundle": "^1.0",
     "nelmio/security-bundle": "^2.8",
-    "yokai/security-token-bundle": "^2.2",
+    "yokai/security-token-bundle": "^2.2 || ^3.0",
     "nelmio/alice": "^2.3 || ^3.0",
     "symfony/mailer": "^4.4 || ^5.1",
     "symfony/twig-bundle": "^4.4 || ^5.1"
