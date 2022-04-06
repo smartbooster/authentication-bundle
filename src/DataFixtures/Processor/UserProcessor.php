@@ -26,6 +26,7 @@ class UserProcessor implements ProcessorInterface
 
     /**
      * @inheritdoc
+     * @param mixed $object
      */
     public function preProcess(string $fixtureId, $object): void
     {
@@ -38,6 +39,7 @@ class UserProcessor implements ProcessorInterface
 
     /**
      * @inheritdoc
+     * @param mixed $object
      */
     public function postProcess(string $fixtureId, $object): void
     {
