@@ -25,3 +25,7 @@ composer require smartbooster/authentication-bundle
 Pull requests are welcome. 
 
 Thanks to [everyone who has contributed](https://github.com/smartbooster/authentication-bundle/contributors) already.
+
+---
+
+*This project is supported by [SmartBooster](https://www.smartbooster.io)*
