@@ -2,18 +2,17 @@
 
 namespace Smart\AuthenticationBundle\Controller;
 
-use Smart\AuthenticationBundle\Email\ForgotPasswordEmail;
 use Smart\AuthenticationBundle\Security\Form\Type\ResetPasswordType;
 use Smart\AuthenticationBundle\Security\Form\Type\UserProfileType;
 use Smart\AuthenticationBundle\Form\Type\Security\ForgotPasswordType;
 use Smart\AuthenticationBundle\Security\SmartUserInterface;
 use Smart\AuthenticationBundle\Security\Token;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Smart\SonataBundle\Mailer\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
+use Smart\SonataBundle\Mailer\BaseMailer;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Yokai\SecurityTokenBundle\Exception\TokenNotFoundException;
@@ -41,11 +40,11 @@ class AbstractSecurityController extends Controller
     protected $tokenManager;
 
     /**
-     * @var MailerInterface
+     * @var BaseMailer
      */
     protected $mailer;
 
-    public function __construct(TokenManagerInterface $tokenManager, MailerInterface $mailer)
+    public function __construct(TokenManagerInterface $tokenManager, BaseMailer $mailer)
     {
         $this->tokenManager = $tokenManager;
         $this->mailer = $mailer;
@@ -136,14 +135,12 @@ class AbstractSecurityController extends Controller
             if ($user instanceof SmartUserInterface) {
                 $token = $this->tokenManager->create(Token::RESET_PASSWORD, $user);
 
-                $this->mailer->send($this->getForgotPasswordEmail([
-                    'from' => $this->container->getParameter('app.mail_from'),
-                    'subject' => $this->translate('security.forgot_password.subject', [], 'email'),
-                    'context' => $this->context,
-                    'token' => $token->getValue(),
+                $email = $this->mailer->newEmail('admin.security.forgot_password', [
                     'domain' => $this->getDomain(),
-                    'security_reset_password_route' => $this->context . '_security_reset_password'
-                ], $user->getEmail()));
+                    'security_reset_password_route' => $this->context . '_security_reset_password',
+                    'token' => $token->getValue(),
+                ]);
+                $this->mailer->send($email, $user->getEmail());
 
                 $this->addFlash('success', 'flash.forgot_password.success');
             }
@@ -154,19 +151,6 @@ class AbstractSecurityController extends Controller
         }
 
         return $this->redirectToRoute($this->context . '_security_login_form');
-    }
-
-    /**
-     * This provide a default email for the forgot password
-     *
-     * @param array<mixed> $parameters
-     * @param string $email
-     *
-     * @return TemplatedEmail
-     */
-    protected function getForgotPasswordEmail(array $parameters, $email)
-    {
-        return new ForgotPasswordEmail($parameters, $email);
     }
 
     /**

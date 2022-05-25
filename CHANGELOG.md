@@ -1,10 +1,11 @@
 CHANGELOG for 1.x
 ===================
 
-## v1.1.4 - (2021-10-14)
+## v1.2.0 - (2022-05-27)
 
 ### Updated
 
+- [[#40](https://github.com/smartbooster/authentication-bundle/issues/40)] Use Mailer from SmartSonataBundle to send email admin.security.forgot_password and admin.security.account_creation
 - [[#35](https://github.com/smartbooster/authentication-bundle/issues/35)] Update dependencies to allow SF5
 
 ## v1.1.3 - (2021-07-06)
