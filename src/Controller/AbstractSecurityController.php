@@ -135,8 +135,9 @@ class AbstractSecurityController extends Controller
             if ($user instanceof SmartUserInterface) {
                 $token = $this->tokenManager->create(Token::RESET_PASSWORD, $user);
 
-                $email = $this->mailer->newEmail('admin.security.forgot_password', [
-                    'domain' => $this->getDomain(),
+                $email = $this->mailer->newEmail($this->context . '.security.forgot_password', [
+                    'domain' => $this->container->getParameter('domain'),
+                    'context' => $this->context,
                     'security_reset_password_route' => $this->context . '_security_reset_password',
                     'token' => $token->getValue(),
                 ]);
