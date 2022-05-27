@@ -8,6 +8,10 @@ CHANGELOG for 1.x
 - [[#40](https://github.com/smartbooster/authentication-bundle/issues/40)] Use Mailer from SmartSonataBundle to send email admin.security.forgot_password and admin.security.account_creation
 - [[#35](https://github.com/smartbooster/authentication-bundle/issues/35)] Update dependencies to allow SF5
 
+### Removed
+
+- Drop support for PHP 7.3
+
 ## v1.1.3 - (2021-07-06)
 
 ### Added
