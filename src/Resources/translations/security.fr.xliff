@@ -112,8 +112,8 @@
                 <target><![CDATA[
                     <p>Afin de garantir la sécurité de vos données merci de choisir un nouveau mot de passe en respectant les règles suivantes :</p>
                     <ul>
-                        <li>- faire au moins 10 caractères ;</li>
-                        <li>- contenir au moins une minuscule, une majuscule et un chiffre.</li>
+                        <li>faire au moins 10 caractères ;</li>
+                        <li>contenir au moins une minuscule, une majuscule et un chiffre.</li>
                     </ul>
                     <p><i>Nous vous conseillons de faire soit des mots de passe faciles à retenir mais longs, soit des mots de passe complexes qui passent par un gestionnaire de mot de passe sécurisé.</i></p>
                 ]]></target>

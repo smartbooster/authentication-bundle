@@ -2,9 +2,19 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="fr" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="security.forgot_password.subject">
-                <source>security.forgot_password.subject</source>
+            <trans-unit id="admin.security.forgot_password.subject">
+                <source>admin.security.forgot_password.subject</source>
                 <target>Demande de changement de mot de passe</target>
+            </trans-unit>
+            <trans-unit id="admin.security.forgot_password.doc_title">
+                <source>admin.security.forgot_password.doc_title</source>
+                <target>Réinitialisation de mot de passe Backoffice</target>
+            </trans-unit>
+            <trans-unit id="reset_password.link.documentation_help">
+                <source>reset_password.link.documentation_help</source>
+                <target><![CDATA[
+                    Lien <b>%action%</b> : Renvoie sur l'url du backoffice /reset_password pour que l'admin puisse mettre à jour son mot de passe
+                ]]></target>
             </trans-unit>
             <trans-unit id="forgot_password.welcome">
                 <source>forgot_password.welcome</source>
@@ -19,36 +29,32 @@
                 <source>forgot_password.action.click</source>
                 <target>Pour réinitialiser votre mot de passe, merci de suivre le lien ci-dessous :</target>
             </trans-unit>
-            <trans-unit id="forgot_password.action.copy_paste">
-                <source>forgot_password.action.copy_paste</source>
-                <target>Vous pouvez également copier directement l'adresse suivante dans votre navigateur :</target>
-            </trans-unit>
             <trans-unit id="forgot_password.reset_password.link">
                 <source>forgot_password.reset_password.link</source>
                 <target>Renouveler mon mot de passe</target>
             </trans-unit>
 
-            <trans-unit id="security.user_created.subject">
-                <source>security.user_created.subject</source>
+            <trans-unit id="admin.security.account_creation.subject">
+                <source>admin.security.account_creation.subject</source>
                 <target>Pour finaliser votre compte, merci d'initialiser votre mot de passe</target>
             </trans-unit>
-            <trans-unit id="user_created.welcome">
-                <source>user_created.welcome</source>
+            <trans-unit id="admin.security.account_creation.doc_title">
+                <source>admin.security.account_creation.doc_title</source>
+                <target>Finaliser votre compte Backoffice</target>
+            </trans-unit>
+            <trans-unit id="account_creation.welcome">
+                <source>account_creation.welcome</source>
                 <target><![CDATA[
                     Bonjour,
                 ]]></target>
             </trans-unit>
-            <trans-unit id="user_created.action.click">
-                <source>user_created.action.click</source>
-                <target>Pour finaliser la création de votre compte, veuillez suivre le lien ci-dessous :</target>
-            </trans-unit>
-            <trans-unit id="user_created.reset_password.link">
-                <source>user_created.reset_password.link</source>
-                <target>Initialiser mon mot de passe</target>
-            </trans-unit>
             <trans-unit id="account_creation.action.click">
                 <source>account_creation.action.click</source>
                 <target>Pour finaliser la création de votre compte, merci de suivre le lien suivant afin d'initialiser votre mot de passe :</target>
+            </trans-unit>
+            <trans-unit id="account_creation.reset_password.link">
+                <source>account_creation.reset_password.link</source>
+                <target>Initialiser mon mot de passe</target>
             </trans-unit>
             <trans-unit id="security.token.information">
                 <source>security.token.information</source>
