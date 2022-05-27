@@ -4,6 +4,7 @@
 
 {# Generate variable default value if not define for documentation #}
 {% if domain is not defined %}{% set domain = 'localhost' %}{% endif %}
+{% if context is not defined %}{% set context = 'admin' %}{% endif %}
 {% if security_reset_password_route is not defined %}{% set security_reset_password_route = 'admin_security_reset_password' %}{% endif %}
 {% if token is not defined %}{% set token = '%token%' %}{% endif %}
 
@@ -22,7 +23,7 @@
     <p>
         {{ 'account_creation.action.click'|trans }}
         <br />
-        {% set url = 'https://' ~ domain ~ path(security_reset_password_route, { token: token }) %}
+        {% set url = 'https://' ~ context ~ '.' ~ domain ~ path(security_reset_password_route, { token: token }) %}
         {{ macro.renderLink(url, 'account_creation.reset_password.link'|trans) }}
     </p>
     <p>

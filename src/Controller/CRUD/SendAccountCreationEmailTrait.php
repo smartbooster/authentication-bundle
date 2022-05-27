@@ -25,7 +25,8 @@ trait SendAccountCreationEmailTrait
         $context = 'admin';
 
         $email = $mailer->newEmail('admin.security.account_creation', [
-            'domain' => $context . '.' . $this->getParameter('domain'),
+            'domain' => $this->getParameter('domain'),
+            'context' => $context,
             'security_reset_password_route' => $context . '_security_reset_password',
             'token' => $token->getValue(),
         ]);
