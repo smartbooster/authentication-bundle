@@ -1,5 +1,7 @@
 # SMARTBOOSTER - Authentication bundle
 
+> :warning: This package is abandoned and no longer maintained. The author suggests using the [smartbooster/sonata-bundle](https://github.com/smartbooster/sonata-bundle) package instead.
+
 [![Latest Stable Version](https://poser.pugx.org/smartbooster/authentication-bundle/v/stable)](https://packagist.org/packages/smartbooster/authentication-bundle)
 [![Latest Unstable Version](https://poser.pugx.org/smartbooster/authentication-bundle/v/unstable)](https://packagist.org/packages/smartbooster/authentication-bundle)
 [![Total Downloads](https://poser.pugx.org/smartbooster/authentication-bundle/downloads)](https://packagist.org/packages/smartbooster/authentication-bundle)
